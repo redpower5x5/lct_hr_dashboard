@@ -1,0 +1,8 @@
+env/
+*/.DS_Store
+venv/
+.env
+/storage/*
+data/
+node_modules/
+__pycache__/
