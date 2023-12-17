@@ -38,11 +38,11 @@ services:
       - redis
     labels:
       - "traefik.enable=true"
-      - "traefik.http.services.beerman-back.loadbalancer.server.port=3333"
-      - "traefik.http.routers.beerman-back.tls.certresolver=le"
-      - "traefik.http.routers.beerman-back.rule=Host(`lct-hr-api.onixx.ru`)"
-      - "traefik.http.routers.beerman-back.entrypoints=websecure"
-      - "traefik.http.routers.beerman-back.tls=true"
+      - "traefik.http.services.lct-hr-api.loadbalancer.server.port=3333"
+      - "traefik.http.routers.lct-hr-api.tls.certresolver=le"
+      - "traefik.http.routers.lct-hr-api.rule=Host(`lct-hr-api.onixx.ru`)"
+      - "traefik.http.routers.lct-hr-api.entrypoints=websecure"
+      - "traefik.http.routers.lct-hr-api.tls=true"
   # hr_dashboard-ui:
   #   build:
   #     context: ./front
