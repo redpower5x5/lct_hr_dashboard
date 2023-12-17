@@ -43,22 +43,22 @@ services:
       - "traefik.http.routers.beerman-back.rule=Host(`lct-hr-api.onixx.ru`)"
       - "traefik.http.routers.beerman-back.entrypoints=websecure"
       - "traefik.http.routers.beerman-back.tls=true"
-  hr_dashboard-ui:
-    build:
-      context: ./front
-      dockerfile: Dockerfile
-    restart: always
-    env_file:
-      - .env
-    depends_on:
-      - api
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.services.beerman.loadbalancer.server.port=80"
-      - "traefik.http.routers.beerman.tls.certresolver=le"
-      - "traefik.http.routers.beerman.rule=Host(`lct-hr.onixx.ru`)"
-      - "traefik.http.routers.beerman.entrypoints=websecure"
-      - "traefik.http.routers.beerman.tls=true"
+  # hr_dashboard-ui:
+  #   build:
+  #     context: ./front
+  #     dockerfile: Dockerfile
+  #   restart: always
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - api
+  #   labels:
+  #     - "traefik.enable=true"
+  #     - "traefik.http.services.beerman.loadbalancer.server.port=80"
+  #     - "traefik.http.routers.beerman.tls.certresolver=le"
+  #     - "traefik.http.routers.beerman.rule=Host(`lct-hr.onixx.ru`)"
+  #     - "traefik.http.routers.beerman.entrypoints=websecure"
+  #     - "traefik.http.routers.beerman.tls=true"
 
 volumes:
   lct_hr_dashboard_pg_data:
