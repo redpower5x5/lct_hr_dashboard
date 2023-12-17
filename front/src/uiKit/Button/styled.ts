@@ -81,6 +81,7 @@ const Button = styled.button<{
   display: flex;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
   border-radius: ${RADIUSES.DEFAULT}px;
   color: ${({ theme }) => theme.colors.base.light};
   padding: 16px 24px;

@@ -14,18 +14,21 @@ import { Bar, Line } from 'react-chartjs-2';
 import { useParams } from 'react-router-dom';
 import { useTheme } from 'styled-components';
 
-import { Flex, Heading, Spacer } from '@uiKit';
+import { Button, Flex, Heading, Spacer } from '@uiKit';
 
+import { ButtonVariant } from '@uiKit/Button/types';
 import { FlexAlignItems, FlexDirection, FlexJustifyContent } from '@uiKit/Flex/types';
 import { HeadingSize } from '@uiKit/Heading/types';
 
 import { Card } from '@component/Card';
-import { FileUploadButton } from '@component/FileUploadButton';
 import { useAPI } from '@hooks/useAPI';
 import { useBreakpoint } from '@hooks/useBreakpoint';
 import { PageLayout } from '@layouts/PageLayout';
-import { getEmployeeMetrics } from '@lib/api';
+import { getEmployeeMetrics, getExcelFile } from '@lib/api';
+import { getEmployeeInfo } from '@lib/api/rest/info/employee';
+import { type GetEmployeeInfoRequest, type GetEmployeeInfoResponse } from '@lib/api/rest/info/employee/types';
 import { type GetEmployeeMetricsRequest, type GetEmployeeMetricsResponse } from '@lib/api/rest/metrics/employee/types';
+import { type GetFileRequest, type GetFileResponse } from '@lib/api/rest/metrics/file/types';
 import { hexToRgba } from '@lib/hexToRgba';
 import { Styled } from '@pages/User/styled';
 
@@ -39,51 +42,37 @@ ChartJS.register(
   Title
 );
 
-export const options = {
-  responsive: true,
-  plugins: {
-    title: {
-      display: true,
-      text: '2'
-    }
-  }
-};
-
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 2',
-      data: [0, 1, 2, 4, 5],
-      backgroundColor: hexToRgba('#0085FF', 0.5) as string
-    }
-  ]
-};
-
-export const data2 = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 2',
-      data: [0, 1, -1, 4, 10],
-      borderColor: hexToRgba('#0085FF', 0.85) as string,
-      backgroundColor: hexToRgba('#0085FF', 0.5) as string
-    }
-  ]
-};
-
 export const User: FC = () => {
   const theme = useTheme();
   const isTablet = useBreakpoint(theme.breakpoints.tablet);
   const { id } = useParams();
 
   const { data: metrics, runRequest } = useAPI<GetEmployeeMetricsRequest, GetEmployeeMetricsResponse>({ apiService: getEmployeeMetrics as any });
+  const { data: user, runRequest: getEmployeeInfoRequest } = useAPI<GetEmployeeInfoRequest, GetEmployeeInfoResponse>({ apiService: getEmployeeInfo as any });
+  const { data: file, runRequest: getFile } = useAPI<GetFileRequest, GetFileResponse>({ apiService: getExcelFile as any });
 
   useEffect(() => {
-    if (id) runRequest({ id });
+    if (id) {
+      runRequest({ id });
+      getEmployeeInfoRequest({ id });
+    }
   }, [id]);
+
+  useEffect(() => {
+    if (file) {
+      const link = document.createElement('a');
+      const url = URL.createObjectURL(file);
+      link.href = url;
+      link.setAttribute('download', 'data.xlsx');
+
+      link.style.display = 'none';
+      document.body.appendChild(link);
+
+      link.click();
+
+      document.body.removeChild(link);
+    }
+  }, [file]);
 
   const periods = useMemo(() => metrics?.periods.map(({ end_date: endDate, start_date: startDate }) => new Intl.DateTimeFormat('ru').formatRange(Date.parse(startDate), Date.parse(endDate))), [metrics?.periods]);
   const answeredEmails = useMemo(() => metrics?.metrics.map(({ number_of_answered_emails: value }) => value), [metrics?.metrics]);
@@ -147,12 +136,12 @@ export const User: FC = () => {
     <PageLayout>
       <Spacer space={theme.spacings.x48} />
       <Flex alignItems={FlexAlignItems.START} gap={theme.spacings.x20} direction={isTablet ? FlexDirection.COLUMN : FlexDirection.ROW} justifyContent={FlexJustifyContent.SPACE_BETWEEN}>
-        <Heading size={HeadingSize.SL}>Иванов Иван Иваныч</Heading>
+        <Heading size={HeadingSize.SL}>{user?.name}</Heading>
         <Flex direction={isTablet ? FlexDirection.COLUMN : FlexDirection.ROW} gap={theme.spacings.x20}>
           <Styled.PercentBlock>
-            <Styled.PercentBlockText fontWeight={500} color={theme.colors.additional.brand_blue}>56 % вероятность ухода</Styled.PercentBlockText>
+            <Styled.PercentBlockText fontWeight={500} color={theme.colors.additional.brand_blue}>{(user?.quit_probability ?? 0) * 100} % вероятность ухода</Styled.PercentBlockText>
           </Styled.PercentBlock>
-          <FileUploadButton onUpload={(e) => { console.log(e); }} name='videoFile' accept=''>Выгрузить отчет</FileUploadButton>
+          <Button onClick={() => { getFile({ id: String(id) }); }} variant={ButtonVariant.SECONDARY}>Выгрузить отчет</Button>
         </Flex>
       </Flex>
       <Spacer space={theme.spacings.x48} />

@@ -10,4 +10,5 @@ export interface RequestData {
   params?: Record<string, any>
   headers?: Record<string, string>
   onUploadProgress?: AxiosRequestConfig['onUploadProgress']
+  responseType?: AxiosRequestConfig['responseType']
 }

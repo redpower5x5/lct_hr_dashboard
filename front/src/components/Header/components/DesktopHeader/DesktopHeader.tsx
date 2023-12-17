@@ -1,6 +1,7 @@
-import React, { type FC } from 'react';
+import React, { type ChangeEvent, type FC, useEffect } from 'react';
 
 import { Link as RouterLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useRecoilState } from 'recoil';
 import { useTheme } from 'styled-components';
 
@@ -11,7 +12,10 @@ import { TextSize } from '@uiKit/Text/types';
 
 import { FileUploadButton } from '@component/FileUploadButton';
 import { Logo } from '@component/Logo';
+import { useAPI } from '@hooks/useAPI';
 import { useBreakpoint } from '@hooks/useBreakpoint';
+import { uploadMetrics } from '@lib/api';
+import { type UploadMetricsRequest, type UploadMetricsResponse } from '@lib/api/rest/admin/uploadMetrics/types';
 import { ROUTES } from '@router/routes/constants';
 
 import { userState } from '../../../../store';
@@ -23,6 +27,27 @@ export const DesktopHeader: FC = () => {
   const isMobile = useBreakpoint(theme.breakpoints.mobile);
   const [user] = useRecoilState(userState);
 
+  const { data, runRequest: uploadMetricsFile, clearData } = useAPI<UploadMetricsRequest, UploadMetricsResponse>({ apiService: uploadMetrics as any });
+
+  const onUploadFile = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.currentTarget.files?.[0];
+
+    clearData();
+
+    const reader = new FileReader();
+    reader.readAsDataURL(e.currentTarget.files?.[0] as Blob);
+
+    if (file) {
+      uploadMetricsFile({ file });
+    }
+  };
+
+  useEffect(() => {
+    if (data?.status) {
+      toast.info('Перезагрузите страницу через несколько секунд');
+    }
+  }, [data?.message]);
+
   return (
     <Styled.Header>
       <Flex alignItems={FlexAlignItems.CENTER}>
@@ -30,7 +55,7 @@ export const DesktopHeader: FC = () => {
           <Logo />
         </RouterLink>
         <Spacer space={theme.spacings.x64} />
-        <FileUploadButton onUpload={(e) => { console.log(e); }} name='data' accept=''>{isMobile ? 'Загрузить' : 'Загрузить новые данные'}</FileUploadButton>
+        {user.role === 'admin' && <FileUploadButton onUpload={onUploadFile} name='data' accept='.csv'>{isMobile ? 'Загрузить' : 'Загрузить новые данные'}</FileUploadButton>}
       </Flex>
       <Flex gap={theme.spacings.x36} alignItems={FlexAlignItems.CENTER}>
         {!isMobile && (

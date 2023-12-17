@@ -1,5 +1,6 @@
-import React, { type FC, useMemo, useState } from 'react';
+import React, { type FC, useEffect, useMemo, useState } from 'react';
 
+import { useRecoilState } from 'recoil';
 import { useTheme } from 'styled-components';
 
 import { Flex, Heading, Input, Spacer } from '@uiKit';
@@ -13,15 +14,26 @@ import { UserCard } from '@component/UserCard';
 import { useAPI } from '@hooks/useAPI';
 import { useBreakpoint } from '@hooks/useBreakpoint';
 import { PageLayout } from '@layouts/PageLayout';
-import { getDepartments, getStatistics } from '@lib/api';
+import { getDepartments, getProfile, getStatistics } from '@lib/api';
 import { type GetDepartmentsRequest, type GetDepartmentsResponse } from '@lib/api/rest/info/departments/types';
 import { type GetStatisticsRequest, type GetStatisticsResponse } from '@lib/api/rest/info/statistics/types';
 import { Styled } from '@pages/Home/styled';
 import { ROUTES } from '@router/routes/constants';
 
+import { userState } from '../../store';
+
 export const Home: FC = () => {
   const theme = useTheme();
   const isTablet = useBreakpoint(theme.breakpoints.tablet);
+
+  const { data: profileData } = useAPI({ apiService: getProfile }, { runOnMount: true });
+  const [, setUser] = useRecoilState(userState);
+
+  useEffect(() => {
+    if (profileData?.username) {
+      setUser(profileData);
+    }
+  }, [profileData?.username]);
 
   const [level, setLevel] = useState<{ value: string, label: string } | undefined>(undefined);
   const [department, setDepartment] = useState<{ value: string, label: string } | undefined>(undefined);
