@@ -18,9 +18,9 @@ alembic
 bcrypt
 pandas
 openpyxl
-torch
-torchvision
-torchaudio
-transformers
-sentence-transformers
+# torch
+# torchvision
+# torchaudio
+# transformers
+# sentence-transformers
 catboost
