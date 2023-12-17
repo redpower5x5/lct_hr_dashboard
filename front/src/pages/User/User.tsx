@@ -58,6 +58,20 @@ export const User: FC = () => {
     }
   }, [id]);
 
+  const convertLabelToNumber = (label: string) => {
+    if (label === 'LOW') return 1;
+    if (label === 'MEDIUM') return 2;
+    if (label === 'HIGH') return 3;
+    return 0;
+  };
+
+  const convertLabelToNumberEmotions = (label: string) => {
+    if (label === 'POSITIVE') return -1;
+    if (label === 'NEUTRAL') return 1;
+    if (label === 'NEGATIVE') return 2;
+    return 0;
+  };
+
   useEffect(() => {
     if (file) {
       const link = document.createElement('a');
@@ -92,6 +106,10 @@ export const User: FC = () => {
   const highPriority = useMemo(() => metrics?.metrics.map(({ high_priority_emails_reply_delay: value }) => value), [metrics?.metrics]);
   const mediumPriority = useMemo(() => metrics?.metrics.map(({ medium_priority_emails_reply_delay: value }) => value), [metrics?.metrics]);
   const lowPriority = useMemo(() => metrics?.metrics.map(({ low_priority_emails_reply_delay: value }) => value), [metrics?.metrics]);
+  const toxic = useMemo(() => metrics?.metrics.map(({ toxcity_in_sent_emails_for_user: value }) => value), [metrics?.metrics]);
+  const toxicReceived = useMemo(() => metrics?.metrics.map(({ toxcity_in_received_emails_for_user: value }) => value), [metrics?.metrics]);
+  const emotions = useMemo(() => metrics?.metrics.map(({ emotions_in_sent_emails_for_user: value }) => value), [metrics?.metrics]);
+  const emotionsReceived = useMemo(() => metrics?.metrics.map(({ emotions_in_received_emails_for_user: value }) => value), [metrics?.metrics]);
 
   const getChartData = useCallback((type: 'bar' | 'line', { label, labels, data }: { label?: string, labels?: string[], data?: any[] }) => {
     if (type === 'bar') {
@@ -132,6 +150,20 @@ export const User: FC = () => {
     }
   }), []);
 
+  const chartCallback = (value: string | number) => {
+    if (value === 1) return 'LOW';
+    if (value === 2) return 'MEDIUM';
+    if (value === 3) return 'HIGH';
+    return '';
+  };
+
+  const chartCallbackEmotions = (value: string | number) => {
+    if (value === -1) return 'POSITIVE';
+    if (value === 1) return 'NEUTRAL';
+    if (value === 2) return 'NEGATIVE';
+    return '';
+  };
+
   return (
     <PageLayout>
       <Spacer space={theme.spacings.x48} />
@@ -147,6 +179,82 @@ export const User: FC = () => {
       <Spacer space={theme.spacings.x48} />
       <Flex direction={FlexDirection.COLUMN} fullWidth fullHeight>
         <Styled.StatisticsList>
+          <Card>
+            <Line options={{
+              responsive: true,
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Уровень токсичности в отправленных письмах'
+                }
+              },
+              scales: {
+                y: {
+                  ticks: {
+                    callback: chartCallback,
+                    stepSize: 1
+                  }
+                }
+              }
+            }} data={getChartData('line', { labels: periods, data: toxic?.map((item) => convertLabelToNumber(item)) })} />
+          </Card>
+          <Card>
+            <Line options={{
+              responsive: true,
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Уровень токсичности  в полученных письмах'
+                }
+              },
+              scales: {
+                y: {
+                  ticks: {
+                    callback: chartCallback,
+                    stepSize: 1
+                  }
+                }
+              }
+            }} data={getChartData('line', { labels: periods, data: toxicReceived?.map((item) => convertLabelToNumber(item)) })} />
+          </Card>
+          <Card>
+            <Line options={{
+              responsive: true,
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Уровень эмоций в отправленных письмах'
+                }
+              },
+              scales: {
+                y: {
+                  ticks: {
+                    callback: chartCallbackEmotions,
+                    stepSize: 1
+                  }
+                }
+              }
+            }} data={getChartData('line', { labels: periods, data: emotions?.map((item) => convertLabelToNumberEmotions(item)) })} />
+          </Card>
+          <Card>
+            <Line options={{
+              responsive: true,
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Уровень эмоций в полученных письмах'
+                }
+              },
+              scales: {
+                y: {
+                  ticks: {
+                    callback: chartCallbackEmotions,
+                    stepSize: 1
+                  }
+                }
+              }
+            }} data={getChartData('line', { labels: periods, data: emotionsReceived?.map((item) => convertLabelToNumberEmotions(item)) })} />
+          </Card>
           <Card>
             <Line options={getOptions('Колличество ответов')} data={getChartData('line', { labels: periods, data: answeredEmails })} />
           </Card>
