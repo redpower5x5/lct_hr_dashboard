@@ -196,6 +196,20 @@ def get_user_statistics(db: Session,
             query = query.filter(
                 db_models.Employee.department_id.in_(department_ids),
             )
+
+        # force user to see only his department statistics
+        if user.department is not None:
+            department_ids = (
+                db.query(db_models.Department.id)
+                .filter(
+                    db_models.Department.name == user.department,
+                )
+                .all()
+            )
+            department_ids = [department_id[0] for department_id in department_ids]
+            query = query.filter(
+                db_models.Employee.department_id.in_(department_ids),
+            )
         result = query.order_by(db_models.Employee.quit_probability.desc()).all()
         statistics = []
         for employee in result:
