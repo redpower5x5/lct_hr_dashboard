@@ -10,7 +10,7 @@ def predict_quit_probability(data: pd.DataFrame) -> pd.DataFrame:
     Predicts the probability of an employee quitting the company
     """
     data_to_model = data.drop(['Почтовый адрес'], axis=1)
-    prediction = model.predict_proba(data_to_model)[:, 0]
+    prediction = model.predict_proba(data_to_model)[:, 1]
     # make new df with predictions and 'Почтовый адрес' column
     prediction_df = pd.DataFrame(prediction, columns=['Вероятность увольнения'])
     prediction_df['Почтовый адрес'] = data['Почтовый адрес']
