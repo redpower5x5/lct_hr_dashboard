@@ -1,0 +1,137 @@
+2023-12-17T07:34:38.360091+0300 INFO initialized db
+2023-12-17T07:35:31.544697+0300 INFO initialized db
+2023-12-17T07:35:58.617956+0300 INFO initialized db
+2023-12-17T07:35:59.520784+0300 INFO initialized db
+2023-12-17T07:39:01.612228+0300 INFO shutting down
+2023-12-17T07:39:04.439509+0300 INFO initialized db
+2023-12-17T07:39:05.363734+0300 INFO initialized db
+2023-12-17T07:39:06.678739+0300 INFO Created user: id=1 username='admin' email='admin@admin.com' phone='+79913131772' role='HR' department=None
+2023-12-17T07:39:53.031408+0300 INFO shutting down
+2023-12-17T07:39:55.447679+0300 INFO initialized db
+2023-12-17T07:39:56.114097+0300 INFO initialized db
+2023-12-17T07:41:16.865557+0300 INFO shutting down
+2023-12-17T07:41:18.767339+0300 INFO initialized db
+2023-12-17T07:41:19.369809+0300 INFO initialized db
+2023-12-17T07:44:01.241811+0300 INFO shutting down
+2023-12-17T07:44:03.383290+0300 INFO initialized db
+2023-12-17T07:44:04.007729+0300 INFO initialized db
+2023-12-17T07:44:12.017698+0300 INFO Created user: id=2 username='string' email='s.olegys0801@gmail.com' phone='string' role='HR' department=None
+2023-12-17T07:46:23.288252+0300 INFO shutting down
+2023-12-17T07:46:25.432877+0300 INFO initialized db
+2023-12-17T07:46:26.033259+0300 INFO initialized db
+2023-12-17T07:46:38.235399+0300 INFO Verifying password 1as2wd3ef against $2b$12$my3ViJop3V4dbjDfNApZfernQ6aP2gs4rAPeEOx4C9JsdVbqwe39a
+2023-12-17T07:48:51.097636+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTMxOTh9.LZflq_1sxPt0TQGIEZebHQKBVvrOrQ5WezDyFksPy1E
+2023-12-17T07:48:51.098937+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703393198}
+2023-12-17T07:49:15.131138+0300 INFO shutting down
+2023-12-17T07:49:17.855006+0300 INFO initialized db
+2023-12-17T07:49:18.804746+0300 INFO initialized db
+2023-12-17T07:49:19.855780+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTMxOTh9.LZflq_1sxPt0TQGIEZebHQKBVvrOrQ5WezDyFksPy1E
+2023-12-17T07:49:19.856227+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703393198}
+2023-12-17T07:55:44.390535+0300 INFO shutting down
+2023-12-17T08:00:34.756342+0300 INFO initialized db
+2023-12-17T08:00:35.697859+0300 INFO initialized db
+2023-12-17T08:02:35.877319+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTMxOTh9.LZflq_1sxPt0TQGIEZebHQKBVvrOrQ5WezDyFksPy1E
+2023-12-17T08:02:35.877980+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703393198}
+2023-12-17T08:03:15.737956+0300 INFO shutting down
+2023-12-17T08:03:18.098340+0300 INFO initialized db
+2023-12-17T08:03:19.043870+0300 INFO initialized db
+2023-12-17T08:03:20.194463+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTMxOTh9.LZflq_1sxPt0TQGIEZebHQKBVvrOrQ5WezDyFksPy1E
+2023-12-17T08:03:20.195018+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703393198}
+2023-12-17T08:03:26.298875+0300 INFO shutting down
+2023-12-17T08:03:28.105265+0300 INFO initialized db
+2023-12-17T08:03:28.913282+0300 INFO initialized db
+2023-12-17T08:03:30.382064+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTMxOTh9.LZflq_1sxPt0TQGIEZebHQKBVvrOrQ5WezDyFksPy1E
+2023-12-17T08:03:30.382510+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703393198}
+2023-12-17T08:03:30.405702+0300 DEBUG updated_department_email_assignments.csv
+2023-12-17T08:04:24.345527+0300 INFO shutting down
+2023-12-17T08:04:26.854771+0300 INFO initialized db
+2023-12-17T08:04:27.765245+0300 INFO initialized db
+2023-12-17T08:04:28.517715+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTMxOTh9.LZflq_1sxPt0TQGIEZebHQKBVvrOrQ5WezDyFksPy1E
+2023-12-17T08:04:28.518290+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703393198}
+2023-12-17T08:04:28.541286+0300 DEBUG ['updated_department_email_assignments', 'csv']
+2023-12-17T08:05:03.545099+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTMxOTh9.LZflq_1sxPt0TQGIEZebHQKBVvrOrQ5WezDyFksPy1E
+2023-12-17T08:05:03.545969+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703393198}
+2023-12-17T08:05:03.549523+0300 DEBUG ['updated_department_email_assignments', 'csv']
+2023-12-17T08:05:22.866726+0300 INFO shutting down
+2023-12-17T08:05:25.738992+0300 INFO initialized db
+2023-12-17T08:05:26.672549+0300 INFO initialized db
+2023-12-17T08:05:31.210336+0300 INFO shutting down
+2023-12-17T08:05:33.943876+0300 INFO initialized db
+2023-12-17T08:05:34.575726+0300 INFO initialized db
+2023-12-17T08:05:38.471846+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTMxOTh9.LZflq_1sxPt0TQGIEZebHQKBVvrOrQ5WezDyFksPy1E
+2023-12-17T08:05:38.472551+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703393198}
+2023-12-17T08:06:19.181436+0300 INFO shutting down
+2023-12-17T08:07:57.436403+0300 INFO initialized db
+2023-12-17T08:07:58.322660+0300 INFO initialized db
+2023-12-17T08:08:02.394326+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTMxOTh9.LZflq_1sxPt0TQGIEZebHQKBVvrOrQ5WezDyFksPy1E
+2023-12-17T08:08:02.394880+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703393198}
+2023-12-17T08:09:56.537377+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTMxOTh9.LZflq_1sxPt0TQGIEZebHQKBVvrOrQ5WezDyFksPy1E
+2023-12-17T08:09:56.539086+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703393198}
+2023-12-17T08:10:13.588544+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTMxOTh9.LZflq_1sxPt0TQGIEZebHQKBVvrOrQ5WezDyFksPy1E
+2023-12-17T08:10:13.588942+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703393198}
+2023-12-17T08:10:37.086148+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTMxOTh9.LZflq_1sxPt0TQGIEZebHQKBVvrOrQ5WezDyFksPy1E
+2023-12-17T08:10:37.086621+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703393198}
+2023-12-17T08:11:03.702790+0300 INFO shutting down
+2023-12-17T08:11:06.150618+0300 INFO initialized db
+2023-12-17T08:11:07.130183+0300 INFO initialized db
+2023-12-17T08:11:57.724025+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTMxOTh9.LZflq_1sxPt0TQGIEZebHQKBVvrOrQ5WezDyFksPy1E
+2023-12-17T08:11:57.724830+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703393198}
+2023-12-17T08:13:55.805694+0300 INFO shutting down
+2023-12-17T08:13:58.639755+0300 INFO initialized db
+2023-12-17T08:13:59.565296+0300 INFO initialized db
+2023-12-17T08:14:00.991926+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTMxOTh9.LZflq_1sxPt0TQGIEZebHQKBVvrOrQ5WezDyFksPy1E
+2023-12-17T08:14:00.992564+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703393198}
+2023-12-17T08:14:25.958946+0300 INFO shutting down
+2023-12-17T08:14:27.789341+0300 INFO initialized db
+2023-12-17T08:14:28.486872+0300 INFO initialized db
+2023-12-17T08:14:30.015593+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTMxOTh9.LZflq_1sxPt0TQGIEZebHQKBVvrOrQ5WezDyFksPy1E
+2023-12-17T08:14:30.016301+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703393198}
+2023-12-17T08:14:30.055639+0300 DEBUG Processing row Почтовый адрес,Колличество ответов,Количество отправленных писем,Количество полученных писем,Среднее количество получателей в письме,"Количество писем, прочитанных через 60 минут после получения",Среднее количество дней между получением и прочтением письма,"Количество писем, отправленных в нерабочее время",Соотношение полученных и отправленных писем,Количество неотвеченных вопросов в письмах,Средняя длина письма,Среднее время ответа на письмо,Количество пройденных корпоративных тестов и курсов,Количество уникальных получателей писем,Количество уникальных отделов в письмах,Средняя токсичность отправленных писем,Средняя токсичность полученных писем,Средняя эмоциональность отправленных писем,Средняя эмоциональность полученных писем,Зарплата,УВОЛЕН НАХУЙ,высокая срочность,средняя срочность,не срочно    49@company.com,10,18,11,3,0,1,10,0.61111111111...
+Name: 0, dtype: object
+2023-12-17T08:20:22.789180+0300 INFO shutting down
+2023-12-17T08:20:29.648436+0300 INFO initialized db
+2023-12-17T08:20:30.571792+0300 INFO initialized db
+2023-12-17T08:20:49.059108+0300 INFO Verifying password 1as2wd3ef against $2b$12$my3ViJop3V4dbjDfNApZfernQ6aP2gs4rAPeEOx4C9JsdVbqwe39a
+2023-12-17T08:20:59.304460+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTUyNDl9.ZiPVqPSv-T3QQeGAJxkiuWZGkopIUnv21VqRo39D0GQ
+2023-12-17T08:20:59.305501+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703395249}
+2023-12-17T08:20:59.323174+0300 INFO No Period exists. Generating first period 2023-12-04 - 2023-12-10
+2023-12-17T08:22:26.207313+0300 INFO shutting down
+2023-12-17T08:23:16.570628+0300 INFO initialized db
+2023-12-17T08:23:17.535052+0300 INFO initialized db
+2023-12-17T08:23:42.184917+0300 INFO Verifying password 1as2wd3ef against $2b$12$my3ViJop3V4dbjDfNApZfernQ6aP2gs4rAPeEOx4C9JsdVbqwe39a
+2023-12-17T08:24:00.045484+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTU0MjJ9.RnIUpL_JVcT4oUo2eSyhLCjuRtVLVM5gLoMUCZZ8wms
+2023-12-17T08:24:00.046579+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703395422}
+2023-12-17T08:28:44.669898+0300 INFO shutting down
+2023-12-17T08:28:48.812072+0300 INFO initialized db
+2023-12-17T08:28:49.771437+0300 INFO initialized db
+2023-12-17T08:29:02.665550+0300 INFO Verifying password 1as2wd3ef against $2b$12$my3ViJop3V4dbjDfNApZfernQ6aP2gs4rAPeEOx4C9JsdVbqwe39a
+2023-12-17T08:29:12.994041+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTU3NDJ9.DidgvQA11_Fwe_MXgFcZ8PYdMmy_neOWPXz0Yny3oAE
+2023-12-17T08:29:12.995005+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703395742}
+2023-12-17T08:29:13.010291+0300 INFO No Period exists. Generating first period 2023-12-04 - 2023-12-10
+2023-12-17T08:30:22.991389+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTU3NDJ9.DidgvQA11_Fwe_MXgFcZ8PYdMmy_neOWPXz0Yny3oAE
+2023-12-17T08:30:22.992557+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703395742}
+2023-12-17T08:31:50.704302+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTU3NDJ9.DidgvQA11_Fwe_MXgFcZ8PYdMmy_neOWPXz0Yny3oAE
+2023-12-17T08:31:50.705022+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703395742}
+2023-12-17T08:32:48.834702+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTU3NDJ9.DidgvQA11_Fwe_MXgFcZ8PYdMmy_neOWPXz0Yny3oAE
+2023-12-17T08:32:48.835799+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703395742}
+2023-12-17T08:33:25.780407+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTU3NDJ9.DidgvQA11_Fwe_MXgFcZ8PYdMmy_neOWPXz0Yny3oAE
+2023-12-17T08:33:25.780981+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703395742}
+2023-12-17T08:33:25.793856+0300 DEBUG department_ids: None, date_from: None, date_to: None
+2023-12-17T08:34:06.399668+0300 INFO shutting down
+2023-12-17T08:34:09.464585+0300 INFO initialized db
+2023-12-17T08:34:10.447604+0300 INFO initialized db
+2023-12-17T08:34:12.261928+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTU3NDJ9.DidgvQA11_Fwe_MXgFcZ8PYdMmy_neOWPXz0Yny3oAE
+2023-12-17T08:34:12.262635+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703395742}
+2023-12-17T08:34:12.292842+0300 DEBUG department_ids: None, date_from: None, date_to: None
+2023-12-17T08:35:23.306212+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTU3NDJ9.DidgvQA11_Fwe_MXgFcZ8PYdMmy_neOWPXz0Yny3oAE
+2023-12-17T08:35:23.306804+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703395742}
+2023-12-17T08:36:19.837483+0300 INFO shutting down
+2023-12-17T08:36:21.912748+0300 INFO initialized db
+2023-12-17T08:36:22.515999+0300 INFO initialized db
+2023-12-17T08:36:24.816816+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTU3NDJ9.DidgvQA11_Fwe_MXgFcZ8PYdMmy_neOWPXz0Yny3oAE
+2023-12-17T08:36:24.817874+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703395742}
+2023-12-17T08:37:39.258284+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTU3NDJ9.DidgvQA11_Fwe_MXgFcZ8PYdMmy_neOWPXz0Yny3oAE
+2023-12-17T08:37:39.259634+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703395742}
+2023-12-17T08:37:44.487747+0300 INFO Getting current user from token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InMub2xlZ3lzMDgwMUBnbWFpbC5jb20iLCJleHAiOjE3MDMzOTU3NDJ9.DidgvQA11_Fwe_MXgFcZ8PYdMmy_neOWPXz0Yny3oAE
+2023-12-17T08:37:44.488272+0300 INFO {'email': 's.olegys0801@gmail.com', 'exp': 1703395742}
+2023-12-17T08:37:55.317960+0300 INFO shutting down
