@@ -146,6 +146,33 @@ def get_all_departments(db: Session, user: response_schemas.User) -> Union[respo
     except NoResultFound:
         return None
 
+def get_employee(db: Session,
+                 id: int,
+                 user: response_schemas.User
+                 ) -> Union[response_schemas.Employee, None]:
+    try:
+        employee = (
+            db.query(db_models.Employee)
+            .filter(
+                db_models.Employee.id == id,
+            )
+            .one()
+        )
+        employee = response_schemas.Employee(
+            id=employee.id,
+            name=employee.name,
+            email=employee.email,
+            phone=employee.phone,
+            department=employee.department.name,
+            sex=employee.sex,
+            age=employee.age,
+            avatar=employee.avatar,
+            quit_probability=employee.quit_probability,
+        )
+        return employee
+    except NoResultFound:
+        return None
+
 def get_user_statistics(db: Session,
                         department_ids: List[int],
                         date_from: str,

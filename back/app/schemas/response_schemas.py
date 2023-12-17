@@ -40,6 +40,7 @@ class Employee(BaseModel):
     sex: str
     age: int
     avatar: str
+    quit_probability: float | None
 
 class EmployeeList(BaseModel):
     model_config = ConfigDict(from_attributes=True)

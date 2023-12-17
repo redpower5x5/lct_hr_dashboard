@@ -81,3 +81,23 @@ async def get_periods(
         )
 
     return periods
+
+@router.get("/employees/{id}", response_model=response_schemas.Employee)
+@cache(expire=settings.CACHE_EXPIRE)
+async def get_employee(
+    id: int,
+    db: Session = Depends(get_db),
+    current_user: response_schemas.User = Depends(get_current_active_user),
+):
+    """
+    Get employee by id
+    """
+    employee = crud.get_employee(db=db, id=id, user=current_user)
+
+    if employee is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Employee not found",
+        )
+
+    return employee
