@@ -18,7 +18,8 @@ export const request = async ({
   data,
   params,
   headers,
-  onUploadProgress
+  onUploadProgress,
+  responseType
 }: RequestData) => {
   const requestURL = getRequestURL({ url, baseUrl });
 
@@ -28,6 +29,7 @@ export const request = async ({
     method: method as unknown as string,
     data,
     params,
-    onUploadProgress
+    onUploadProgress,
+    responseType
   });
 };
