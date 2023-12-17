@@ -66,9 +66,9 @@ export const User: FC = () => {
   };
 
   const convertLabelToNumberEmotions = (label: string) => {
-    if (label === 'POSITIVE') return -1;
+    if (label === 'POSITIVE') return 2;
     if (label === 'NEUTRAL') return 1;
-    if (label === 'NEGATIVE') return 2;
+    if (label === 'NEGATIVE') return -1;
     return 0;
   };
 
@@ -158,9 +158,9 @@ export const User: FC = () => {
   };
 
   const chartCallbackEmotions = (value: string | number) => {
-    if (value === -1) return 'POSITIVE';
+    if (value === 2) return 'POSITIVE';
     if (value === 1) return 'NEUTRAL';
-    if (value === 2) return 'NEGATIVE';
+    if (value === -1) return 'NEGATIVE';
     return '';
   };
 
