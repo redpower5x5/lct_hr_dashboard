@@ -12,6 +12,7 @@ from app.config import log
 from app.utils.token import get_password_hash
 from app.utils.next_week import get_next_week_dates
 from app.ml.model_processor import predict_quit_probability
+import os
 
 from typing import List
 
@@ -461,5 +462,92 @@ def get_employee_metrics(db: Session,
             )
             metrics_list.append(model)
         return response_schemas.EmployeeMetricaList(metrics=metrics_list, periods=periods)
+    except NoResultFound:
+        return None
+
+def export_employee_metrics_excel_file(db: Session,
+                                       id: int,
+                                       user: response_schemas.User
+                                       ) -> Union[str, None]:  # file_path
+    try:
+        metrics = (
+            db.query(db_models.EmployeMetrica)
+            .filter(
+                db_models.EmployeMetrica.employee_id == id,
+            ).order_by(db_models.EmployeMetrica.period_id.asc())
+            .all()
+        )
+        metrics_list = []
+        periods = []
+        for metric in metrics:
+            period = response_schemas.Period(
+                    id=metric.period.id,
+                    start_date=metric.period.start_date.strftime("%Y-%m-%d"),
+                    end_date=metric.period.end_date.strftime("%Y-%m-%d"),
+                )
+            periods.append(period)
+            model = response_schemas.EmployeeMetrica(
+                id=metric.id,
+                employee_id=metric.employee_id,
+                number_of_answered_emails=metric.number_of_answered_emails,
+                number_of_sent_emails=metric.number_of_sent_emails,
+                number_of_received_emails=metric.number_of_received_emails,
+                mean_number_of_recipients_in_one_email_for_user=metric.mean_number_of_recipients_in_one_email_for_user,
+                number_of_emails_read_after_x_minutes=metric.number_of_emails_read_after_x_minutes,
+                mean_number_of_days_between_receiving_emails_and_read=metric.mean_number_of_days_between_receiving_emails_and_read,
+                number_of_sent_emails_outside_of_working_hours=metric.number_of_sent_emails_outside_of_working_hours,
+                received_and_sent_emails_proportion_for_user=metric.received_and_sent_emails_proportion_for_user,
+                mean_number_of_not_answered_questions_in_email=metric.mean_number_of_not_answered_questions_in_email,
+                mean_length_of_user_emails=metric.mean_length_of_user_emails,
+                mean_answering_time_for_user=metric.mean_answering_time_for_user,
+                number_of_passed_corporative_tests_or_courses_for_user=metric.number_of_passed_corporative_tests_or_courses_for_user,
+                number_of_unique_recipients_of_emails_for_user=metric.number_of_unique_recipients_of_emails_for_user,
+                number_of_unique_departments_in_emails_for_user=metric.number_of_unique_departments_in_emails_for_user,
+                toxcity_in_sent_emails_for_user=metric.toxcity_in_sent_emails_for_user,
+                toxcity_in_received_emails_for_user=metric.toxcity_in_received_emails_for_user,
+                emotions_in_sent_emails_for_user=metric.emotions_in_sent_emails_for_user,
+                emotions_in_received_emails_for_user=metric.emotions_in_received_emails_for_user,
+                salary=metric.salary,
+                high_priority_emails_reply_delay=metric.high_priority_emails_reply_delay,
+                medium_priority_emails_reply_delay=metric.medium_priority_emails_reply_delay,
+                low_priority_emails_reply_delay=metric.low_priority_emails_reply_delay,
+                period=period,
+            )
+            metrics_list.append(model)
+        df = pd.DataFrame([metric.dict() for metric in metrics_list])
+        download_folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), f"../../downloads")
+        # set columns to df
+        df.rename(columns={
+            'employee_id': 'ID Сотрудника',
+            'number_of_answered_emails': 'Колличество ответов',
+            'number_of_sent_emails': 'Количество отправленных писем',
+            'number_of_received_emails': 'Количество полученных писем',
+            'mean_number_of_recipients_in_one_email_for_user': 'Среднее количество получателей в письме',
+            'number_of_emails_read_after_x_minutes': 'Количество писем, прочитанных через 60 минут после получения',
+            'mean_number_of_days_between_receiving_emails_and_read': 'Среднее количество дней между получением и прочтением письма',
+            'number_of_sent_emails_outside_of_working_hours': 'Количество писем, отправленных в нерабочее время',
+            'received_and_sent_emails_proportion_for_user': 'Соотношение полученных и отправленных писем',
+            'mean_number_of_not_answered_questions_in_email': 'Количество неотвеченных вопросов в письмах',
+            'mean_length_of_user_emails': 'Средняя длина письма',
+            'mean_answering_time_for_user': 'Среднее время ответа на письмо',
+            'number_of_passed_corporative_tests_or_courses_for_user': 'Количество пройденных корпоративных тестов и курсов',
+            'number_of_unique_recipients_of_emails_for_user': 'Количество уникальных получателей писем',
+            'number_of_unique_departments_in_emails_for_user': 'Количество уникальных отделов в письмах',
+            'toxcity_in_sent_emails_for_user': 'Средняя токсичность отправленных писем',
+            'toxcity_in_received_emails_for_user': 'Средняя токсичность полученных писем',
+            'emotions_in_sent_emails_for_user': 'Средняя эмоциональность отправленных писем',
+            'emotions_in_received_emails_for_user': 'Средняя эмоциональность полученных писем',
+            'salary': 'Зарплата',
+            'high_priority_emails_reply_delay': 'высокая срочность',
+            'medium_priority_emails_reply_delay': 'средняя срочность',
+            'low_priority_emails_reply_delay': 'не срочно',
+            'period': 'Период',
+            }, inplace=True)
+        # check if downloads folder exists
+        if not os.path.exists(download_folder):
+            os.makedirs(download_folder)
+        file_path = os.path.join(download_folder, f"employee_{id}_metrics.xlsx")
+        df.to_excel(file_path, index=False)
+        return file_path
     except NoResultFound:
         return None

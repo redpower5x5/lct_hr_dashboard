@@ -1,8 +1,8 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, File
 from sqlalchemy import CursorResult
 
 from sqlalchemy.orm import Session
-
+from fastapi.responses import FileResponse
 from app.config import log
 from app.schemas import response_schemas, request_schemas
 from app.core.dependencies import get_db
@@ -38,3 +38,22 @@ async def get_employee_metrics(
         )
 
     return metrics
+
+@router.get("/employee/{id}/export_excel_file")
+async def export_excel_file(
+    id: int,
+    db: Session = Depends(get_db),
+    current_user: response_schemas.User = Depends(get_current_active_user),
+):
+    """
+    Export employee metrics to excel file
+    """
+    file_path = crud.export_employee_metrics_excel_file(db=db, id=id, user=current_user)
+
+    if file_path is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="No metrics found",
+        )
+
+    return FileResponse(file_path, media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", filename=f"employee_{id}_metrics.xlsx")
